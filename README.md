@@ -68,7 +68,7 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 # Exploratory Data Analysis
 
 ## Count
-<img src="Images/COUNT_dept_gender_martial.PNG" width="600">
+<img src="Images/TARGET_Analysis/TARGET.PNG" width="600">
 <img src="Images/COUNT_education.PNG" width="600">
 <img src="Images/COUNT_jobRole.PNG" width="600">
 
