@@ -433,11 +433,46 @@ _Moving forward only evaluating Logistic Regression-Up_
  
 <img src="Images/RISK/RISK_Overtime_jobrole.PNG" width="500" />
 
-***Note (Overtime)**: employees that have low, medium, and high risk work significantly more Overtime hours than employees with no risk
+**Note (Overtime)**: employees that have low, medium, and high risk work significantly more Overtime hours than employees with no risk
 * **13**:(8-High | 5-Med) are **Research Scientist**
 * **10**:(7-High | 3-Med) are **Lab Techs**
 * **8**:(3-High  | 5-Med) are **Sales Executives**
 * **5**:(4_High  | 1-Med) are **Sales Reps**
+
+## Risk Bucket: Years with Current Manager
+
+<img src="Images/RISK/RISK_YearsWithCurrentManager.PNG" width="500" />
+ 
+<img src="Images/RISK/RISK_YearsWithCurrentManager_jobrole.PNG" width="500" />
+
+**Note (YearsWithCurrentManager)**: Employees that have low, medium and high risk generally have worked with the current manager for a lesser amount of years
+* as Years with Current Manager Decreases will on average clearly effect **Sales Reps**
+
+## Risk Bucket: JobLevel
+
+<img src="Images/RISK/RISK_JobLevel.PNG" width="500" />
+ 
+<img src="Images/RISK/RISK_JobLevel_jobrole.PNG" width="500" />
+
+**Note (JobLevel)**: Employees that have medium and high risk work are mostly JobLevel 1
+* **18**:(11-High | 7-Med) are **Lab Techs**
+* **15**:(8-High  | 7-Med) are **Research Scientist**
+* **12**:(8-High  | 4-Med) are **Sales Reps**
+
+# Risk Bucket: Environment Satisfaction
+
+<img src="Images/RISK/RISK_EnvironmentSatisfaction.PNG" width="500" />
+ 
+<img src="Images/RISK/RISK_EnvironmentSatisfaction_jobrole.PNG" width="500" />
+
+**Note (EnvironmentSatisfaction)**: Employees that have medium and high risk tend to a LOW Environment Satisfaction
+* **7**:(5-High | 2-Med) are **Lab Techs**
+* **7**:(4-High | 3-Med) are **Research Scientist**
+* **4**:(4-High) are **Sales Execs**
+
+
+
+
 
  
 
