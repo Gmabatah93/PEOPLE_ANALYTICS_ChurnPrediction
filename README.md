@@ -68,8 +68,19 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 # Exploratory Data Analysis
 <img src="Images/TARGET_Analysis/TARGET.PNG" width="600">
 <img src="Images/TARGET_Analysis/TARGET_dept.PNG" width="600">
+
+## DEPT: SALES
 <img src="Images/TARGET_Analysis/TARGET_Sales_jobrole.PNG" width="600">
 
+### Sales Representatives
+<p float="left">
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_joblevel.PNG" width="100" />
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_jobinvolvement.PNG" width="100" /> 
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_businesstravel.PNG" width="100" />
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_maritalstatus.PNG" width="100" />
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_overtime.PNG" width="100" />
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_stockoptionlevel.PNG" width="100" />
+</p>
 # Modeling
 
 ## Preprocess
