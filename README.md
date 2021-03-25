@@ -356,3 +356,15 @@ Num | Model | Recall | Precision | F1
 8  | Regularized Regression.40 (SMOTE)   | 83% | 28% | 0.42
 9  | SVM.46 (DOWN)                       | 81% | 32% | 0.46
 10 | Decision Tree.24 (SMOTE)            | 81% | 22% | 0.35
+
+**Note (Test Results)**: Top Models I choose for further evaluation
+1. **XGB-Down (Thres 43%)**: Performed the best overall in terms of Recall
+2. **Logistic Regression-Up**: Performed nearly as well as the best model with a better much Precision (Best in terms of F1 score)
+3. **SVM (Thres 13%)**: Perform as well as the best models with no Resampling
+
+### Model Performance
+
+<p float="left">
+  <img src="Images/MODELING/GAIN.PNG" width="500" />
+  <img src="Images/MODELING/LIFT.PNG" width="500" /> 
+</p>
