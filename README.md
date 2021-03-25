@@ -66,25 +66,9 @@ YearsSinceLastPromotion  | how many years has it been since an employee receieve
 YearsWithCurrManager     | how many years has an employee been with their current mamanger
 
 # Exploratory Data Analysis
-
-## Count
 <img src="Images/TARGET_Analysis/TARGET.PNG" width="600">
-<img src="Images/COUNT_education.PNG" width="600">
-<img src="Images/COUNT_jobRole.PNG" width="600">
-
-## Bivarate Analysis
-<img src="Images/AGE.PNG" width="600">
-<img src="Images/AGE_gender_dept_jobRole.PNG" width="600">
-<img src="Images/MONTHLYINCOME.PNG" width="600">
-<img src="Images/MONTHLYINCOME_gender_dept_jobRole.PNG" width="600">
-
-## Target Analysis
-<img src="Images/CHURN.PNG" width="600">
-<img src="Images/CHURN_department.PNG" width="600">
-<img src="Images/CHURN_Sales_jobRole.PNG" width="600">
-<img src="Images/CHURN_Sales_SalesRep_X.PNG" width="600">
-<img src="Images/CHURN_Sales_SalesRep_Corr.PNG" width="600">
-<img src="Images/CHURN_Sales_SalesRep_X_Numeric.PNG" width="600">
+<img src="Images/TARGET_Analysis/TARGET_dept.PNG" width="600">
+<img src="Images/TARGET_Analysis/TARGET_Sales_jobrole.PNG" width="600">
 
 # Modeling
 
