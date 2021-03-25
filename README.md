@@ -142,29 +142,31 @@ lambda | 0.11
 
 ## Diagnostic
 
-Model | Recall
---- | ---
-Logistic Regression | 53%
-SVM | 23%
-XGB | 11%
-Regularized Regression | 6%
-Random Forrest | 4%
-Decision Tree | 0&
+Num | Model | Recall
+|--- | --- | ---
+1 | Logistic Regression | 53%
+2 | SVM | 23%
+3 | XGB | 11%
+4 | Regularized Regression | 6%
+5 | Random Forrest | 4%
+6 | Decision Tree | 0%
 
 Best **_BASELINE_** Model: **Logistic Regression**
 
 <img src="Images/MODELING/BASELINE_ROC.PNG" width="600">
 
-Model | Recall
---- | ---
-Decision Tree | 100%
-Logistic Regression | 77%
-SVM | 72%
-Regularized Regression | 72%
-XGB | 68%%
-Random Forrest | 55&
+Num | Model | Recall
+| --- | --- | ---
+1 | Decision Tree | 100%
+2 | Logistic Regression | 77%
+3 | SVM | 72%
+4 | Regularized Regression | 72%
+5 | XGB | 68%
+6 | Random Forrest | 55%
 
 Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+
+
 
 **NOTE (Class Imbalance)**: 
 Their are a number of different Techniques to potentially overcome Class Imbalance when modeling, such as changing the Hyperparameter and Threshold tunning like done previously. Other strategies are Cost Sensitive Algorithms or One-Class Algorithms.
@@ -211,34 +213,34 @@ Sigma | 0.009
 
 <img src="Images/MODELING/DOWN_elas.PNG" width="600">
 
-Num | Hyperparameter | value
-|--- | --- | ---
-1 | alpha | 0.16
-2 | lambda | 0.01
+Hyperparameter | value
+--- | ---
+alpha | 0.16
+lambda | 0.01
 
 ## Diagnostic
 
-Model | Recall
---- | ---
-Regularized Regression| 79%
-Logistic Regression | 72%
-Random Forrest | 70%
-XGB | 70%
-SVM | 68%
-Decision Tree | 64%
+Num | Model | Recall
+| --- | --- | ---
+1 | Regularized Regression| 79%
+2 | Logistic Regression | 72%
+3 | Random Forrest | 70%
+4 | XGB | 70%
+5 | SVM | 68%
+6 | Decision Tree | 64%
 
 Best **_UNDERSAMPLE_** Model: **Regularized Regression**
 
 <img src="Images/MODELING/DOWN_ROC.PNG" width="600">
 
-Model | Recall
---- | ---
-XGB | 83%
-SVM | 77%
-Random Forrest | 70%
-Logistic Regression | 70%
-Regularized Regression | 66%
-Decision Tree | 62%
+Num |Model | Recall
+| --- | --- | ---
+1 | XGB | 83%
+2 | SVM | 77%
+3 | Random Forrest | 70%
+4 | Logistic Regression | 70%
+5 | Regularized Regression | 66%
+6 | Decision Tree | 62%
 
 Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
 
