@@ -168,6 +168,8 @@ Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%
 
 
 
+ 
+## UNDERSAMPLE 
 **NOTE (Class Imbalance)**: 
 Their are a number of different Techniques to potentially overcome Class Imbalance when modeling, such as changing the Hyperparameter and Threshold tunning like done previously. Other strategies are Cost Sensitive Algorithms or One-Class Algorithms.
 
@@ -175,8 +177,7 @@ The technique I’m going to used is called Resampling. Resampling is done by a 
 * **Undersampling (Down Sampling)**: removing samples from the majority to match the minority.
 * **Oversampling (Up Sampling)**: duplicating samples from the minority class to match the majority class.
 * **Synthetic Minority Oversampling Technique (SMOTE)**: synthesize new examples from the minority class using k-nearest neighbors.
-* 
-## UNDERSAMPLE 
+
 ## Fit
 <img src="Images/MODELING/DOWN_dt.PNG" width="600">
 
@@ -220,27 +221,17 @@ lambda | 0.01
 
 ## Diagnostic
 
-Num | Model | Recall
-| --- | --- | ---
-1 | Regularized Regression| 79%
-2 | Logistic Regression | 72%
-3 | Random Forrest | 70%
-4 | XGB | 70%
-5 | SVM | 68%
-6 | Decision Tree | 64%
-
-Best **_UNDERSAMPLE_** Model: **Regularized Regression**
-
 <img src="Images/MODELING/DOWN_ROC.PNG" width="600">
 
-Num |Model | Recall
-| --- | --- | ---
-1 | XGB | 83%
-2 | SVM | 77%
-3 | Random Forrest | 70%
-4 | Logistic Regression | 70%
-5 | Regularized Regression | 66%
-6 | Decision Tree | 62%
+Num | Model | Recall | Num | Model | Recall
+| --- | --- | --- | --- | --- | ---
+1 | Regularized Regression (DOWN) | 79% | 1 | XGB.43 (DOWN)| 83%
+2 | Logistic Regression (DOWN) | 72%    | 2 | SVM.46 (DOWN)| 77%
+3 | Random Forrest (DOWN) | 70%         | 3 | Random Forrest.55 (DOWN)| 70%
+4 | XGB (DOWN) | 70%                    | 4 | Logistic Regression.79 (DOWN)| 70%
+5 | SVM (DOWN) | 68%                    | 5 | Regularized Regression.72 (DOWN)| 66%
+6 | Decision Tree (DOWN) | 64%          | 6 | Decision Tree.79 (DOWN)| 62%
 
-Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+* Best **_UNDERSAMPLE_** Model: **Regularized Regression**
+* Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
 
