@@ -1983,9 +1983,9 @@ gg_mod_RF_up <- mod_RF_up$results %>%
 # - visual
 gg_mod_RF_up
 # - store best hyperparameters in terms of recall: 
-# -- # Of Randomly Selected Features = 41
+# -- # Of Randomly Selected Features = 5
 # -- Minimal Node Size = 1
-# -- Splitrule = extratrees
+# -- Splitrule = gini
 df_RF_up_tune <- data.frame(
   mtry = mod_RF_up$results %>% arrange(desc(Recall)) %>% slice(1) %>% pull(mtry),
   min.node.size = mod_RF_up$results %>% arrange(desc(Recall)) %>% slice(1) %>% pull(min.node.size),
