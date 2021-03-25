@@ -368,3 +368,28 @@ Num | Model | Recall | Precision | F1
   <img src="Images/MODELING/GAIN.PNG" width="500" />
   <img src="Images/MODELING/LIFT.PNG" width="500" /> 
 </p>
+
+Num | Model | Percentile | GAIN | LIFT 
+| --- | --- | --- | --- | ---
+1  | Logistic Regression-Up | 20th | 70.2% | 3.5x
+2  | SVM (Thres 13%)        | 20th | 61.7% | 3x
+3  | XGB-Down (Thres 43%)   | 20th | 57.4% | 2.86x
+   |                        |      |       | 
+1  | Logistic Regression-Up | 30th | 85.1% | 2.84x
+2  | SVM (Thres 13%)        | 30th | 76.6% | 2.56x
+3  | XGB-Down (Thres 43%)   | 30th | 70.2% | 2.35x
+   |                        |      |       | 
+1  | Logistic Regression-Up | 50th | 91.5% | 1.83x
+1  | SVM (Thres 13%)        | 50th | 91.5% | 1.83x
+3  | XGB-Down (Thres 43%)   | 50th | 87.2% | 1.74x
+
+**Note (20th Percentile): 
+* **Logistic Regression-Up** performed the best compared to the other models capturing **70%** of employees that Churned performing 3.5x better than random
+* **SVM (Thres 13%)** came in 2nd with a Gain of **61.7%** perfroming 3x better than random
+
+**Note (30th Percentile)**:
+* **Logistic Regression-Up** performed the best compared to the other models capturing **85%** of employees that Churned performing **2.84x** better than random
+* **SVM (Thres 13%)** came in 2nd with a Gain of **76.6%** perfroming **2.56x** better than random
+
+**Note (50th Percentile)**:
+* **Logistic Regression-Up & SVM (Thres 13%)** performed the best capturing **91.5%** of employees that Churned performing **1.83x** better than random
