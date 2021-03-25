@@ -144,14 +144,14 @@ lambda | 0.11
 
 <img src="Images/MODELING/BASELINE_ROC.PNG" width="600">
 
-Num | Model | Recall | Num | Model | Recall
-|--- | --- | --- | --- | --- | ---
-1 | Logistic Regression | 53%     | 1 | Decision Tree.16 | 100%
-2 | SVM | 23%                     | 2 | Logistic Regression.16 | 77%
-3 | XGB | 11%                     | 3 | SVM.13 | 72%
-4 | Regularized Regression | 6%   | 4 | Regularized Regression.21 | 72%
-5 | Random Forrest | 4%           | 5 | XGB.21 | 68%
-6 | Decision Tree | 0%            | 6 | Random Forrest.21 | 55%
+Num | Model | Recall | | Num | Model | Recall
+| --- | --- | --- | --- | --- | --- | ---
+1 | Logistic Regression     | 53% |   | 1 | Decision Tree.16          | 100%
+2 | SVM                     | 23% |   | 2 | Logistic Regression.16    | 77%
+3 | XGB                     | 11% |   | 3 | SVM.13                    | 72%
+4 | Regularized Regression  | 6%  |   | 4 | Regularized Regression.21 | 72%
+5 | Random Forrest          | 4%  |   | 5 | XGB.21                    | 68%
+6 | Decision Tree           | 0%  |   | 6 | Random Forrest.21         | 55%
 
 * Best **_BASELINE_** Model: **Logistic Regression**
 * Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
@@ -213,14 +213,14 @@ lambda | 0.01
 
 <img src="Images/MODELING/DOWN_ROC.PNG" width="600">
 
-Num | Model | Recall | Num | Model | Recall
-| --- | --- | --- | --- | --- | ---
-1 | Regularized Regression (DOWN) | 79% | 1 | XGB.43 (DOWN)| 83%
-2 | Logistic Regression (DOWN) | 72%    | 2 | SVM.46 (DOWN)| 77%
-3 | Random Forrest (DOWN) | 70%         | 3 | Random Forrest.55 (DOWN)| 70%
-4 | XGB (DOWN) | 70%                    | 4 | Logistic Regression.79 (DOWN)| 70%
-5 | SVM (DOWN) | 68%                    | 5 | Regularized Regression.72 (DOWN)| 66%
-6 | Decision Tree (DOWN) | 64%          | 6 | Decision Tree.79 (DOWN)| 62%
+Num | Model | Recall | | Num | Model | Recall
+| --- | --- | --- | --- | --- | --- | ---
+1 | Regularized Regression (DOWN)  | 79% |  | 1 | XGB.43 (DOWN)                     | 83%
+2 | Logistic Regression (DOWN)     | 72% |  | 2 | SVM.46 (DOWN)                     | 77%
+3 | Random Forrest (DOWN)          | 70% |  | 3 | Random Forrest.55 (DOWN)          | 70%
+4 | XGB (DOWN)                     | 70% |  | 4 | Logistic Regression.79 (DOWN)     | 70%
+5 | SVM (DOWN)                     | 68% |  | 5 | Regularized Regression.72 (DOWN)  | 66%
+6 | Decision Tree (DOWN)           | 64% |  | 6 | Decision Tree.79 (DOWN)           | 62%
 
 * Best **_UNDERSAMPLE_** Model: **Regularized Regression**
 * Best **_UNDERSAMPLE + Threshold_** Model: **XGB with cut off at 43%**.
@@ -282,4 +282,63 @@ Num | Model | Recall | | Num | Model | Recall
 
 * Best **_OVERSAMPLE_** Model: **Logistic Regression**
 * Best **_OVERSAMPLE + Threshold_** Model: **Random Forrest with cut off at 79%**.
+
+
+## SMOTE 
+### Fit
+<img src="Images/MODELING/SMOTE_dt.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Cost Complexity | 0.02
+
+<img src="Images/MODELING/SMOTE_rf.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Num of Feats per Split | 2
+Minimal Node Size      | 1
+Splitrule              | gini
+
+<img src="Images/MODELING/SMOTE_xgb.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Num of Boosting Iterations | 50
+Shrinkage | 0.3
+Max Tree Depth      | 1
+gamma    | 0
+Subsample Ratio of Columns | 0.6
+Minimum Sum of Instance Weight | 1
+Subsample | 0.625
+
+<img src="Images/MODELING/SMOTE_svm.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Cost | 4
+Sigma | 0.01
+
+<img src="Images/MODELING/SMOTE_elas.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+alpha | 0.94
+lambda | 0.11
+
+## Diagnostic
+
+<img src="Images/MODELING/SMOTE_ROC.PNG" width="600">
+
+Num | Model | Recall | | Num | Model | Recall
+| --- | --- | --- | --- | --- | --- | ---
+1 | Logistic Regression (SMOTE)    | 57% |   | 1 | Decision Tree.14 (SMOTE)         | 79%
+2 | SVM (SMOTE)                    | 45% |   | 2 | Regularized Regression.4 (SMOTE) | 79%
+3 | Decision Tree (SMOTE)          | 38% |   | 3 | XGB.23 (SMOTE)                   | 77%
+4 | XGB (SMOTE)                    | 36% |   | 4 | Logistic Regression.14 (SMOTE)   | 77%
+5 | Regularized Regression (SMOTE) | 26% |   | 5 | Random Forrest.29 (SMOTE)        | 74%
+6 | Random Forrest (SMOTE)         | 11% |   | 6 | SVM.22 (SMOTE)                   | 72%
+
+* Best **_SMOTE_** Model: **Logistic Regression**
+* Best **_SMOTE + Threshold_** Model: **Decision Tree cut off at 14%**.
 
