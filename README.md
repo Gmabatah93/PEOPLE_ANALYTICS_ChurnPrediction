@@ -99,7 +99,7 @@ Used 10-Fold Cross Validation to find the best hyperparameters
 **GOAL**: To catch a VERY HIGH % of the people that may Churn from the company and rank based on risk of churning. (Based on this the metric I choose to optimize is **Recall** becauses it focuses on predicting the Target Class “Churn” Correctly)
 
 ## BASELINE 
-## Fit
+### Fit
 <img src="Images/MODELING/BASELINE_dt.PNG" width="600">
 
 Hyperparameter | value
@@ -140,7 +140,7 @@ Hyperparameter | value
 alpha | 0.1
 lambda | 0.11
 
-## Diagnostic
+### Diagnostic
 
 <img src="Images/MODELING/BASELINE_ROC.PNG" width="600">
 
@@ -168,7 +168,7 @@ The technique I’m going to used is called Resampling. Resampling is done by a 
 * **Oversampling (Up Sampling)**: duplicating samples from the minority class to match the majority class.
 * **Synthetic Minority Oversampling Technique (SMOTE)**: synthesize new examples from the minority class using k-nearest neighbors.
 
-## Fit
+### Fit
 <img src="Images/MODELING/DOWN_dt.PNG" width="600">
 
 Hyperparameter | value
@@ -209,7 +209,7 @@ Hyperparameter | value
 alpha | 0.16
 lambda | 0.01
 
-## Diagnostic
+### Diagnostic
 
 <img src="Images/MODELING/DOWN_ROC.PNG" width="600">
 
@@ -223,5 +223,63 @@ Num | Model | Recall | Num | Model | Recall
 6 | Decision Tree (DOWN) | 64%          | 6 | Decision Tree.79 (DOWN)| 62%
 
 * Best **_UNDERSAMPLE_** Model: **Regularized Regression**
-* Best **_UNDERSAMPLE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+* Best **_UNDERSAMPLE + Threshold_** Model: **XGB with cut off at 43%**.
+
+## OVERSAMPLE 
+### Fit
+<img src="Images/MODELING/UP_dt.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Cost Complexity | 0
+
+<img src="Images/MODELING/UP_rf.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Num of Feats per Split | 5
+Minimal Node Size      | 1
+Splitrule              | gini
+
+<img src="Images/MODELING/UP_xgb.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Num of Boosting Iterations | 200
+Shrinkage | 0.3
+Max Tree Depth      | 4
+gamma    | 0
+Subsample Ratio of Columns | 0.6
+Minimum Sum of Instance Weight | 1
+Subsample | 0.875
+
+<img src="Images/MODELING/UP_svm.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Cost | 16
+Sigma | 0.01
+
+<img src="Images/MODELING/UP_elas.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+alpha | 0.74
+lambda | 0.001
+
+## Diagnostic
+
+<img src="Images/MODELING/UP_ROC.PNG" width="600">
+
+Num | Model | Recall | | Num | Model | Recall
+| --- | --- | --- | --- | --- | --- | ---
+1 | Logistic Regression (UP)    | 70% |   | 1 | Random Forrest.24 (UP)        | 79%
+2 | Regularized Regression (UP) | 68% |   | 2 | Logistic Regression.23 (UP)   | 74%
+3 | XGB (UP)                    | 45% |   | 3 | Regularized Regression.6 (UP) | 68%
+4 | Decision Tree (UP)          | 43% |   | 4 | XGB.2 (UP)                    | 55%
+5 | SVM (UP)                    | 19% |   | 5 | Decision Tree.23 (UP)         | 53%
+6 | Random Forrest (UP)         | 17% |   | 6 | SVM.03 (UP)                   | 47%
+
+* Best **_OVERSAMPLE_** Model: **Logistic Regression**
+* Best **_OVERSAMPLE + Threshold_** Model: **Random Forrest with cut off at 79%**.
 
