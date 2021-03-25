@@ -326,7 +326,7 @@ Hyperparameter | value
 alpha | 0.94
 lambda | 0.11
 
-## Diagnostic
+### Diagnostic
 
 <img src="Images/MODELING/SMOTE_ROC.PNG" width="600">
 
@@ -342,3 +342,17 @@ Num | Model | Recall | | Num | Model | Recall
 * Best **_SMOTE_** Model: **Logistic Regression**
 * Best **_SMOTE + Threshold_** Model: **Decision Tree cut off at 14%**.
 
+## Test Results
+
+Num | Model | Recall | Precision | F1
+| --- | --- | --- | --- | ---
+1  | XGB.43 (DOWN)                       | 87% | 31% | 0.46
+2  | Logistic Regression.23 (UP)         | 85% | 47% | 0.60
+3  | Logistic Regression (UP)            | 85% | 47% | 0.61
+4  | SVM.13                              | 85% | 36% | 0.51
+5  | Logistic Regression (DOWN)          | 85% | 34% | 0.49
+6  | Logistic Regression.16 (DOWN)       | 83% | 46% | 0.59
+7  | XGB.23 (SMOTE)                      | 83% | 33% | 0.47
+8  | Regularized Regression.40 (SMOTE)   | 83% | 28% | 0.42
+9  | SVM.46 (DOWN)                       | 81% | 32% | 0.46
+10 | Decision Tree.24 (SMOTE)            | 81% | 22% | 0.35
