@@ -393,3 +393,9 @@ Num | Model | Percentile | GAIN | LIFT
 
 **Note (50th Percentile)**:
 * **Logistic Regression-Up & SVM (Thres 13%)** performed the best capturing **91.5%** of employees that Churned performing **1.83x** better than random
+
+# Feature Selection
+
+<img src="Images/MODELING/FEATURE_log_up.PNG" width="500" />
+
+<img src="Images/MODELING/FEATURE_svm.PNG" width="500" />
