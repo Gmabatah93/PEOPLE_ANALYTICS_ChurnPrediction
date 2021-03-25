@@ -383,7 +383,7 @@ Num | Model | Percentile | GAIN | LIFT
 1  | SVM (Thres 13%)        | 50th | 91.5% | 1.83x
 3  | XGB-Down (Thres 43%)   | 50th | 87.2% | 1.74x
 
-**Note (20th Percentile): 
+**Note (20th Percentile)**: 
 * **Logistic Regression-Up** performed the best compared to the other models capturing **70%** of employees that Churned performing 3.5x better than random
 * **SVM (Thres 13%)** came in 2nd with a Gain of **61.7%** perfroming 3x better than random
 
@@ -399,4 +399,36 @@ Num | Model | Percentile | GAIN | LIFT
   <img src="Images/MODELING/FEATURE_log_up.PNG" width="500" />
   <img src="Images/MODELING/FEATURE_svm.PNG" width="500" />
 </p>
+
+# Risk Bucket
+
+<img src="Images/RISK/RISK_High_Level.PNG" width="500" />
+
+**Note (High Level)**:
+* **Logistic Regression-Up** identified **69**:(38-High | 31-Med) Risk employees
+* **SVM (Thres 13%)** identified **15**:(5-High | 8-Med) Risk employees
+
+_Moving forward only evaluating Logistic Regression-Up_
+
+<img src="Images/RISK/RISK_Department.PNG" width="500" />
+
+**Note (Department)**: Of the 69 high-med risk employees
+* R&D Department has **42**:(22-High | 20-Med)
+* Sales Department has **24**:(15-High | 9-Med)
+
+<p float="left">
+  <img src="Images/RISK/RISK_Research_jobrole.PNG" width="500" />
+  <img src="Images/RISK/RISK_Sales_jobrole.PNG" width="500" />
+</p>
+
+**Note (Jobrole)**:
+* **19**:(11-High | 8-Med) are **Lab Techs**
+* **16**:(9-High | 7-Med) are **Research Scientist**
+* **12**:(8-High | 4-Med) are **Sales Reps**
+* **11**:(6-High | 5-Med) are **Sales Execs**
+
+
+
+
+
 
