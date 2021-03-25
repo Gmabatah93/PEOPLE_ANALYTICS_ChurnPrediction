@@ -114,5 +114,27 @@ Minimal Node Size      | 1
 Splitrule              | gini
 
 <img src="Images/MODELING/BASELINE_xgb.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Num of Boosting Iterations | 50
+Shrinkage | 0.3
+Max Tree Depth      | 1
+gamma    | 0
+Subsample Ratio of Columns | 0.6
+Minimum Sum of Instance Weight | 1
+Subsample | 1
+
 <img src="Images/MODELING/BASELINE_svm.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Cost | 16
+Sigma | 0.006
+
 <img src="Images/MODELING/BASELINE_elas.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+alpha | 0.1
+lambda | 0.11
