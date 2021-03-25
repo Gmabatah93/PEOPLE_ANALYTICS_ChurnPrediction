@@ -72,7 +72,8 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 ## DEPT: SALES
 <img src="Images/TARGET_Analysis/TARGET_Sales_jobrole.PNG" width="600">
 
-### Sales Representatives
+### Sales Representatives: 
+#### Factors
 <p float="left">
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_joblevel.PNG" width="300" />
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_jobinvolvement.PNG" width="300" /> 
@@ -81,6 +82,9 @@ YearsWithCurrManager     | how many years has an employee been with their curren
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_overtime.PNG" width="300" />
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_stockoptionlevel.PNG" width="300" />
 </p>
+#### Continous
+<img src="Images/TARGET_Analysis/TARGET_SalesRep_Corr.PNG" width="400">
+
 # Modeling
 
 ## Preprocess
