@@ -82,8 +82,9 @@ YearsWithCurrManager     | how many years has an employee been with their curren
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_overtime.PNG" width="300" />
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_stockoptionlevel.PNG" width="300" />
 </p>
+
 #### Continous
-<img src="Images/TARGET_Analysis/TARGET_SalesRep_Corr.PNG" width="400">
+<img src="Images/TARGET_Analysis/TARGET_SalesRep_Corr.PNG" width="700">
 
 # Modeling
 
