@@ -99,8 +99,8 @@ Used 10-Fold Cross Validation to find the best hyperparameters
 **GOAL**: To catch a VERY HIGH % of the people that may Churn from the company and rank based on risk of churning. (Based on this the metric I choose to optimize is **Recall** becauses it focuses on predicting the Target Class “Churn” Correctly)
 
 ## Baseline Fit
-<img src="Images/BASELINE_dt.PNG" width="600">
-<img src="Images/BASELINE_rf.PNG" width="600">
-<img src="Images/BASELINE_xgb.PNG" width="600">
-<img src="Images/BASELINE_svm.PNG" width="600">
-<img src="Images/BASELINE_elas.PNG" width="600">
+<img src="Images/MODELING/BASELINE_dt.PNG" width="600">
+<img src="Images/MODELING/BASELINE_rf.PNG" width="600">
+<img src="Images/MODELING/BASELINE_xgb.PNG" width="600">
+<img src="Images/MODELING/BASELINE_svm.PNG" width="600">
+<img src="Images/MODELING/BASELINE_elas.PNG" width="600">
