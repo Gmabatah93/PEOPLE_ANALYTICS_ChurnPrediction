@@ -98,7 +98,8 @@ Used 10-Fold Cross Validation to find the best hyperparameters
 
 **GOAL**: To catch a VERY HIGH % of the people that may Churn from the company and rank based on risk of churning. (Based on this the metric I choose to optimize is **Recall** becauses it focuses on predicting the Target Class “Churn” Correctly)
 
-## Baseline Fit
+## Baseline 
+## Fit
 <img src="Images/MODELING/BASELINE_dt.PNG" width="600">
 
 Hyperparameter | value
@@ -138,3 +139,30 @@ Hyperparameter | value
 --- | ---
 alpha | 0.1
 lambda | 0.11
+
+## Diagnostic
+
+Model | Recall
+--- | ---
+Logistic Regression | 53%
+SVM | 23%
+XGB | 11%
+Regularized Regression | 6%
+Random Forrest | 4%
+Decision Tree | 0&
+
+Best **BASELINE** Model: Logistic Regression
+
+<img src="Images/MODELING/BASELINE_ROC.PNG" width="600">
+
+Model | Recall
+--- | ---
+Decision Tree | 100%
+Logistic Regression | 77%
+SVM | 72%
+Regularized Regression | 72%
+XGB | 68%%
+Random Forrest | 55&
+
+Best **BASELINE + Threshold** Model: Logistic Regression with cut off at 16%. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+
