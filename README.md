@@ -427,6 +427,21 @@ _Moving forward only evaluating Logistic Regression-Up_
 * **12**:(8-High | 4-Med) are **Sales Reps**
 * **11**:(6-High | 5-Med) are **Sales Execs**
 
+## Risk Bucket: Overtime
+
+<img src="Images/RISK/RISK_Overtime.PNG" width="500" />
+ 
+<img src="Images/RISK/RISK_Overtime_jobrole.PNG" width="500" />
+
+***Note (Overtime)**: employees that have low, medium, and high risk work significantly more Overtime hours than employees with no risk
+* **13**:(8-High | 5-Med) are **Research Scientist**
+* **10**:(7-High | 3-Med) are **Lab Techs**
+* **8**:(3-High  | 5-Med) are **Sales Executives**
+* **5**:(4_High  | 1-Med) are **Sales Reps**
+
+ 
+
+
 
 
 
