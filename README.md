@@ -100,7 +100,15 @@ Used 10-Fold Cross Validation to find the best hyperparameters
 
 ## Baseline Fit
 <img src="Images/MODELING/BASELINE_dt.PNG" width="600">
+**Best Hyperparameter**:
+Cost Complexity | 0.06
+
 <img src="Images/MODELING/BASELINE_rf.PNG" width="600">
+**Best Hyperparameter**:
+Num of Features | Minimal Node Size | Splitrule
+--- | --- | ---
+2   | 1   | gini
+
 <img src="Images/MODELING/BASELINE_xgb.PNG" width="600">
 <img src="Images/MODELING/BASELINE_svm.PNG" width="600">
 <img src="Images/MODELING/BASELINE_elas.PNG" width="600">
