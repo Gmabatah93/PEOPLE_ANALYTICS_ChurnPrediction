@@ -142,29 +142,19 @@ lambda | 0.11
 
 ## Diagnostic
 
-Num | Model | Recall
-|--- | --- | ---
-1 | Logistic Regression | 53%
-2 | SVM | 23%
-3 | XGB | 11%
-4 | Regularized Regression | 6%
-5 | Random Forrest | 4%
-6 | Decision Tree | 0%
-
-Best **_BASELINE_** Model: **Logistic Regression**
-
 <img src="Images/MODELING/BASELINE_ROC.PNG" width="600">
 
-Num | Model | Recall
-| --- | --- | ---
-1 | Decision Tree | 100%
-2 | Logistic Regression | 77%
-3 | SVM | 72%
-4 | Regularized Regression | 72%
-5 | XGB | 68%
-6 | Random Forrest | 55%
+Num | Model | Recall | Num | Model | Recall
+|--- | --- | --- | --- | --- | ---
+1 | Logistic Regression | 53%     | 1 | Decision Tree.16 | 100%
+2 | SVM | 23%                     | 2 | Logistic Regression.16 | 77%
+3 | XGB | 11%                     | 3 | SVM.13 | 72%
+4 | Regularized Regression | 6%   | 4 | Regularized Regression.21 | 72%
+5 | Random Forrest | 4%           | 5 | XGB.21 | 68%
+6 | Decision Tree | 0%            | 6 | Random Forrest.21 | 55%
 
-Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+* Best **_BASELINE_** Model: **Logistic Regression**
+* Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
 
 
 
@@ -233,5 +223,5 @@ Num | Model | Recall | Num | Model | Recall
 6 | Decision Tree (DOWN) | 64%          | 6 | Decision Tree.79 (DOWN)| 62%
 
 * Best **_UNDERSAMPLE_** Model: **Regularized Regression**
-* Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+* Best **_UNDERSAMPLE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
 
