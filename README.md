@@ -74,12 +74,12 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 
 ### Sales Representatives
 <p float="left">
-  <img src="Images/TARGET_Analysis/TARGET_SalesRep_joblevel.PNG" width="100" />
-  <img src="Images/TARGET_Analysis/TARGET_SalesRep_jobinvolvement.PNG" width="100" /> 
-  <img src="Images/TARGET_Analysis/TARGET_SalesRep_businesstravel.PNG" width="100" />
-  <img src="Images/TARGET_Analysis/TARGET_SalesRep_maritalstatus.PNG" width="100" />
-  <img src="Images/TARGET_Analysis/TARGET_SalesRep_overtime.PNG" width="100" />
-  <img src="Images/TARGET_Analysis/TARGET_SalesRep_stockoptionlevel.PNG" width="100" />
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_joblevel.PNG" width="200" />
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_jobinvolvement.PNG" width="200" /> 
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_businesstravel.PNG" width="200" />
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_maritalstatus.PNG" width="200" />
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_overtime.PNG" width="200" />
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_stockoptionlevel.PNG" width="200" />
 </p>
 # Modeling
 
