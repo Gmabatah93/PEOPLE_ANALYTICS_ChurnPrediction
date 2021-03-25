@@ -98,7 +98,7 @@ Used 10-Fold Cross Validation to find the best hyperparameters
 
 **GOAL**: To catch a VERY HIGH % of the people that may Churn from the company and rank based on risk of churning. (Based on this the metric I choose to optimize is **Recall** becauses it focuses on predicting the Target Class “Churn” Correctly)
 
-## Baseline 
+## BASELINE 
 ## Fit
 <img src="Images/MODELING/BASELINE_dt.PNG" width="600">
 
@@ -151,7 +151,7 @@ Regularized Regression | 6%
 Random Forrest | 4%
 Decision Tree | 0&
 
-Best **BASELINE** Model: Logistic Regression
+Best **_BASELINE_** Model: **Logistic Regression**
 
 <img src="Images/MODELING/BASELINE_ROC.PNG" width="600">
 
@@ -164,5 +164,81 @@ Regularized Regression | 72%
 XGB | 68%%
 Random Forrest | 55&
 
-Best **BASELINE + Threshold** Model: Logistic Regression with cut off at 16%. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+
+**NOTE (Class Imbalance)**: 
+Their are a number of different Techniques to potentially overcome Class Imbalance when modeling, such as changing the Hyperparameter and Threshold tunning like done previously. Other strategies are Cost Sensitive Algorithms or One-Class Algorithms.
+
+The technique I’m going to used is called Resampling. Resampling is done by a number of ways;
+* **Undersampling (Down Sampling)**: removing samples from the majority to match the minority.
+* **Oversampling (Up Sampling)**: duplicating samples from the minority class to match the majority class.
+* **Synthetic Minority Oversampling Technique (SMOTE)**: synthesize new examples from the minority class using k-nearest neighbors.
+* 
+## UNDERSAMPLE 
+## Fit
+<img src="Images/MODELING/DOWN_dt.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Cost Complexity | 0.02
+
+<img src="Images/MODELING/DOWN_rf.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Num of Feats per Split | 41
+Minimal Node Size      | 1
+Splitrule              | extratrees
+
+<img src="Images/MODELING/DOWN_xgb.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Num of Boosting Iterations | 50
+Shrinkage | 0.4
+Max Tree Depth      | 1
+gamma    | 0
+Subsample Ratio of Columns | 0.8
+Minimum Sum of Instance Weight | 1
+Subsample | 0.625
+
+<img src="Images/MODELING/DOWN_svm.PNG" width="600">
+
+Hyperparameter | value
+--- | ---
+Cost | 2
+Sigma | 0.009
+
+<img src="Images/MODELING/DOWN_elas.PNG" width="600">
+
+Num | Hyperparameter | value
+|--- | --- | ---
+1 | alpha | 0.16
+2 | lambda | 0.01
+
+## Diagnostic
+
+Model | Recall
+--- | ---
+Regularized Regression| 79%
+Logistic Regression | 72%
+Random Forrest | 70%
+XGB | 70%
+SVM | 68%
+Decision Tree | 64%
+
+Best **_UNDERSAMPLE_** Model: **Regularized Regression**
+
+<img src="Images/MODELING/DOWN_ROC.PNG" width="600">
+
+Model | Recall
+--- | ---
+XGB | 83%
+SVM | 77%
+Random Forrest | 70%
+Logistic Regression | 70%
+Regularized Regression | 66%
+Decision Tree | 62%
+
+Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
 
