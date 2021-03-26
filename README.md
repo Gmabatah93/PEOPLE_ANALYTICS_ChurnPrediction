@@ -74,7 +74,7 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 <img src="Images/TARGET_Analysis/TARGET_dept.PNG" width="600">
 
 ## DEPT: SALES
-<img src="Images/TARGET_Analysis/TARGET_Sales_jobrole.PNG" width="600">
+<img src="Images/TARGET_Analysis/TARGET_Sales_jobrole.PNG" width="800">
 
 ### Sales Representatives: 
 #### Factors
