@@ -8,6 +8,7 @@
 - [Test Results](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#test-results)
 - [Feature Selection](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#feature-selection)
 - [Risk Bucket](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#risk-bucket)
+- [Prescriptive Analysis](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction/blob/main/README.md#prescriptive-analysis)
 
 ### Code Used
 R | version
@@ -499,10 +500,56 @@ _Moving forward only evaluating Logistic Regression-Up_
 <img src="Images/PRESCRIPTIVE/OVERTIME_Prediction.PNG" width="500">
 
 > **Note (Predictions):**
-> * **_Laboratory Technician_**: **15**:(7-High | 3-Med | 5-Low)
-> * **_Research Scientist_**: **14**:(8-High | 5-Med | 1-Low)
-> * **_Sales Executive_**: **8**: (3-High | 5-Med)
-> * **_Sales Representative_**: **5**: (4-High | 1-Med)
+> * **_Laboratory Technician_**: 15:(7-High | 3-Med | 5-Low)
+> * **_Research Scientist_**: 14:(8-High | 5-Med | 1-Low)
+> * **_Sales Executive_**: 8: (3-High | 5-Med)
+> * **_Sales Representative_**: 5: (4-High | 1-Med)
+
+> ### STRATEGY:
+
+For the employees that actually churned. They had a very high Overtime %. I think the focus should be first focused on **Laboratory Technicians** _(18/56 Labs Techs from the test set actually churned)_. This may need a big change that may effect they current work flow process so we'd have to bring in multiple stakeholders to see if we can come up with a solution
+
+
+> ## Job Level 1
+
+<img src="Images/PRESCRIPTIVE/JOBLEVEL_Actual.PNG" width="500">
+
+> **Note (Actual)**:
+> * **_Laboratory Technician_**: 16/41 Churned
+> * **_Research Scientist_**: 8/46 Churned
+> **_Sales Representative_**:  7/14  Churned
+
+<img src="Images/PRESCRIPTIVE/JOBLEVEL_Prediction.PNG" width="500">
+
+> **Note (Prediction)**:
+> * **_Laboratory Technician_**: 24:(11-High | 7-Med | 6-Low)
+> * **_Research Scientist_**: 16:(8-High  | 7-Med | 1-Low)
+> * **_Sales Representative_**: 12:(8-High  | 4-Med) 
+
+> ### STRATEGY:
+
+Assuming JobLevel 1 is Entry Level, HR and Management can use this model to help facilitate in recruiting and hiring. Identifying future canidates into "low, medium, and high risk categories could help Management decide on which canidates to pursue further and how based off talent and level of risk. Hiring more “no to low risk” canidates could potentially decrease the overall Churn Rate for the company in future. Also identifying med-high risk canidates and employees along with what they contribute to the company can further help leaders decide on what to do going forward.
+
+
+> ## Environment Satisfaction
+
+<img src="Images/PRESCRIPTIVE/ENVIRONMENT_Actual.PNG" width="500">
+
+> **Note (Actual)**:
+> * **_Laboratory Technician_**: 6/11  Churned
+> * **_Research Scientist_**: 3/11  Churned
+> * **_Sales Executive_**: 2/15  Churned
+
+<img src="Images/PRESCRIPTIVE/ENVIRONMENT_Prediction.PNG" width="500">
+
+> **Note (Prediction)**:
+> * **_Laboratory Technician_**: 7:(5-High | 2-Med)
+> * **_Research Scientist_**: 7:(4-High | 3-Med)
+> * **_Sales Executive_**: 4:(4-High) 
+
+> ### STRATEGY: 
+
+It looks like the primary concern is for Labratory Technicians (54% leave when environment satisfaction is low). Perform survey to assess the current state of conditions for Lab Techs, that includes phyical environment, and culture. From the results we can then work with employees and management to come up with a variety of potential solutions. Finally work with stakeholders to find out which solution to implement first. Once we decide on a solution I will conduct an A/B Test using the same survey and test for statistical significance after implementing our solution.
 
 
 
