@@ -76,9 +76,10 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 ## DEPARTMENT: Sales
 <img src="Images/TARGET_Analysis/TARGET_Sales_jobrole.PNG" width="600">
 
-> ### Sales Representatives: 
+### Sales Representatives: 
 
-#### Factors
+> #### Factors
+
 <p float="left">
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_joblevel.PNG" width="300" />
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_jobinvolvement.PNG" width="300" /> 
@@ -88,7 +89,8 @@ YearsWithCurrManager     | how many years has an employee been with their curren
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_stockoptionlevel.PNG" width="300" />
 </p>
 
-#### Continous
+> #### Continous
+
 <img src="Images/TARGET_Analysis/TARGET_SalesRep_Corr.PNG" width="700">
 
 # Modeling
@@ -158,8 +160,8 @@ Num | Model | Recall | | Num | Model | Recall
 5 | Random Forrest          | 4%  |   | 5 | XGB.21                    | 68%
 6 | Decision Tree           | 0%  |   | 6 | Random Forrest.21         | 55%
 
-> Best **_BASELINE_** Model: **Logistic Regression**
-> Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+> * Best **_BASELINE_** Model: **Logistic Regression**
+> * Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
 
 
 
