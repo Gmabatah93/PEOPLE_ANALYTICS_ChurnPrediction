@@ -25,11 +25,11 @@ DALEX            | 2.0.1
 modelplotr       | 1.1.0
 doParallel       | 1.0.16
 
-## Business Requirement
+### Business Requirement
 1. Find drivers of employee Churn for company A
 2. Develop a model to predict Churn
 
-## Data Collection
+### Data Collection
 _The dataset did not come with predefined description. My idea of what each variable means is listed_
 
 Feature | Description
@@ -100,7 +100,7 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 
 Used 10-Fold Cross Validation to find the best hyperparameters
 
-**GOAL**: To catch a VERY HIGH % of the people that may Churn from the company and rank based on risk of churning. (Based on this the metric I choose to optimize is **Recall** becauses it focuses on predicting the Target Class “Churn” Correctly)
+> **GOAL**: To catch a VERY HIGH % of the people that may Churn from the company and rank based on risk of churning. (Based on this the metric I choose to optimize is **Recall** becauses it focuses on predicting the Target Class “Churn” Correctly)
 
 ## BASELINE 
 ### Fit
@@ -157,17 +157,17 @@ Num | Model | Recall | | Num | Model | Recall
 5 | Random Forrest          | 4%  |   | 5 | XGB.21                    | 68%
 6 | Decision Tree           | 0%  |   | 6 | Random Forrest.21         | 55%
 
-* Best **_BASELINE_** Model: **Logistic Regression**
-* Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
+> Best **_BASELINE_** Model: **Logistic Regression**
+> Best **_BASELINE + Threshold_** Model: **Logistic Regression with cut off at 16%**. _Suspicious about the 100% Recall from Decision Tree plus the Precision was really poor compared to the other models_.
 
 
 
  
 ## UNDERSAMPLE 
-**NOTE (Class Imbalance)**: 
+> **NOTE (Class Imbalance)**: 
 Their are a number of different Techniques to potentially overcome Class Imbalance when modeling, such as changing the Hyperparameter and Threshold tunning like done previously. Other strategies are Cost Sensitive Algorithms or One-Class Algorithms.
 
-The technique I’m going to used is called Resampling. Resampling is done by a number of ways;
+> The technique I’m going to used is called Resampling. Resampling is done by a number of ways;
 * **Undersampling (Down Sampling)**: removing samples from the majority to match the minority.
 * **Oversampling (Up Sampling)**: duplicating samples from the minority class to match the majority class.
 * **Synthetic Minority Oversampling Technique (SMOTE)**: synthesize new examples from the minority class using k-nearest neighbors.
@@ -226,8 +226,8 @@ Num | Model | Recall | | Num | Model | Recall
 5 | SVM (DOWN)                     | 68% |  | 5 | Regularized Regression.72 (DOWN)  | 66%
 6 | Decision Tree (DOWN)           | 64% |  | 6 | Decision Tree.79 (DOWN)           | 62%
 
-* Best **_UNDERSAMPLE_** Model: **Regularized Regression**
-* Best **_UNDERSAMPLE + Threshold_** Model: **XGB with cut off at 43%**.
+> Best **_UNDERSAMPLE_** Model: **Regularized Regression**
+> Best **_UNDERSAMPLE + Threshold_** Model: **XGB with cut off at 43%**.
 
 ## OVERSAMPLE 
 ### Fit
