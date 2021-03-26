@@ -70,8 +70,8 @@ YearsSinceLastPromotion  | how many years has it been since an employee receieve
 YearsWithCurrManager     | how many years has an employee been with their current mamanger
 
 # Exploratory Data Analysis
-<img src="Images/TARGET_Analysis/TARGET.PNG" width="1000" height="500">
-<img src="Images/TARGET_Analysis/TARGET_dept.PNG" width="800" height="300">
+<img src="Images/TARGET_Analysis/TARGET.PNG" width="1000" >
+<img src="Images/TARGET_Analysis/TARGET_dept.PNG" width="800">
 
 ## DEPT: SALES
 <img src="Images/TARGET_Analysis/TARGET_Sales_jobrole.PNG" width="800">
