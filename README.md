@@ -484,6 +484,26 @@ _Moving forward only evaluating Logistic Regression-Up_
 * **7**:(4-High | 3-Med) are **Research Scientist**
 * **4**:(4-High) are **Sales Execs**
 
+# Prescriptive Analysis
+
+> ## Overtime
+
+<img src="Images/PRESCRIPTIVE/OVERTIME_Actual.PNG" width="500">
+
+> **Note (Actuals):**
+> * **_Laboratory Technician_**: 18 Churn | 61% Overtime
+> * **_Research Scientis_**: 8 Churn | 75% Overtime
+> * **_Sales Executives_**: 8 Churn | 62% Overtime
+> * **_Sales Representative_**: 7 Churn | 43% Overtime
+
+<img src="Images/PRESCRIPTIVE/OVERTIME_Prediction.PNG" width="500">
+
+> **Note (Predictions):**
+> * **_Laboratory Technician_**: **15**:(7-High | 3-Med | 5-Low)
+> * **_Research Scientist_**: **14**:(8-High | 5-Med | 1-Low)
+> * **_Sales Executive_**: **8**: (3-High | 5-Med)
+> * **_Sales Representative_**: **5**: (4-High | 1-Med)
+
 
 
 
