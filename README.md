@@ -1,7 +1,11 @@
 # Project Overview: Churn Prediction
 > This dataset is a fictional HR dataset created by IBM Data Scientists. There is not much backgroud information about where the data is sourced, what each data point means or how each variable is measured . However based on the data I infer that it may be a company related to the production and sales of Pharmaceuticals. For this project I will be analyzing the data to find drivers of churn and develop a model.
 
-## Code Used
+### Table Of Contents
+
+- [Data Collection](#Data Collection)
+
+### Code Used
 R | version
 --- | ---
 readr            | 1.4.0
