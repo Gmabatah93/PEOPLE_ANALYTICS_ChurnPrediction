@@ -3,7 +3,11 @@
 
 ### Table Of Contents
 
-- [Data Collection](#Data Collection)
+- [Exploratory Data Analysis](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#exploratory-data-analysis)
+- [Modeling](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#modeling)
+- [Test Results](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#test-results)
+- [Feature Selection](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#feature-selection)
+- [Risk Bucket](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#risk-bucket)
 
 ### Code Used
 R | version
