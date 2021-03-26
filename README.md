@@ -96,17 +96,20 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 # Modeling
 
 ## Preprocess
-**Split**
-* 60% - Training Set
-* 20% - Validation Set
-* 20% - Test Set
 
-Used 10-Fold Cross Validation to find the best hyperparameters
+> **Split**
+> * 60% - Training Set
+> * 20% - Validation Set
+> * 20% - Test Set
+
+> Used 10-Fold Cross Validation to find the best hyperparameters
 
 > **GOAL**: To catch a VERY HIGH % of the people that may Churn from the company and rank based on risk of churning. (Based on this the metric I choose to optimize is **Recall** becauses it focuses on predicting the Target Class “Churn” Correctly)
 
 ## BASELINE 
-### Fit
+
+> ### Fit
+
 <img src="Images/MODELING/BASELINE_dt.PNG" width="600">
 
 Hyperparameter | value
@@ -147,7 +150,7 @@ Hyperparameter | value
 alpha | 0.1
 lambda | 0.11
 
-### Diagnostic
+> ### Diagnostic
 
 <img src="Images/MODELING/BASELINE_ROC.PNG" width="600">
 
