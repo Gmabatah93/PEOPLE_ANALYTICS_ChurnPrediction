@@ -1,6 +1,33 @@
 # Project Overview: Churn Prediction
 > This dataset is a fictional HR dataset created by IBM Data Scientists. There is not much backgroud information about where the data is sourced, what each data point means or how each variable is measured . However based on the data I infer that it may be a company related to the production and sales of Pharmaceuticals. For this project I will be analyzing the data to find drivers of churn and develop a model.
 
+## Summary
+
+**Exploratory Data Analysis**
+* Churn Rate: **16%**
+* Churn Rate By Department: R&D = **14%** | Sales = **21%** | HR = **19%**
+* Features that are correlated with Churn: Job Involvement | Job Level | Job Role | Marital Status | Overtime | Stock Option Level | Business Travel  
+
+**Modeling**
+* **_Validation Results_**
+* **_Test Results_**
+Num | Model | Recall | Precision | F1
+| --- | --- | --- | --- | ---
+1  | XGB.43 (DOWN)                       | 87% | 31% | 0.46
+2  | Logistic Regression.23 (UP)         | 85% | 47% | 0.60
+3  | Logistic Regression (UP)            | 85% | 47% | 0.61
+4  | SVM.13                              | 85% | 36% | 0.51
+5  | Logistic Regression (DOWN)          | 85% | 34% | 0.49
+6  | Logistic Regression.16 (DOWN)       | 83% | 46% | 0.59
+7  | XGB.23 (SMOTE)                      | 83% | 33% | 0.47
+8  | Regularized Regression.40 (SMOTE)   | 83% | 28% | 0.42
+9  | SVM.46 (DOWN)                       | 81% | 32% | 0.46
+10 | Decision Tree.24 (SMOTE)            | 81% | 22% | 0.35
+
+> Choosen Top Models: **Logistic Regression-Up** & **SVM (Thres 13%)**
+
+**Feature Selection**
+
 ### Table Of Contents
 
 - [Exploratory Data Analysis](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#exploratory-data-analysis)
