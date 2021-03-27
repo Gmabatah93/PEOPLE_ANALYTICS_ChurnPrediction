@@ -25,7 +25,7 @@ Num | Model | Recall | Precision | F1
 9  | SVM.46 (DOWN)                       | 81% | 32% | 0.46
 10 | Decision Tree.24 (SMOTE)            | 81% | 22% | 0.35
 
-> Choosen Top Models: **Logistic Regression-Up** & **SVM (Thres 13%)**
+> Choosen Top Model: **Logistic Regression-Up**
 
 **Feature Selection**
 
