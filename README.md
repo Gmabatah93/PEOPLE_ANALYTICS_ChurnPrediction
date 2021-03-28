@@ -4,16 +4,16 @@
 
 > Summary
 
-**Exploratory Data Analysis**
+> **Exploratory Data Analysis**
 * Churn Rate: **16%**
 * Churn Rate By Department: R&D = **14%** | Sales = **21%** | HR = **19%**
 * Features that are correlated with Churn: Job Involvement | Job Level | Job Role | Marital Status | Overtime | Stock Option Level | Business Travel  
 
-**Modeling**
+> **Modeling**
 * **_Validation Results_**
 * **_Test Results_**
 
-Num | Model | Recall | Precision | F1
+> Num | Model | Recall | Precision | F1
 | --- | --- | --- | --- | ---
 1  | XGB.43 (DOWN)                       | 87% | 31% | 0.46
 2  | Logistic Regression.23 (UP)         | 85% | 47% | 0.60
@@ -28,7 +28,7 @@ Num | Model | Recall | Precision | F1
 
 > Choosen Top Model: **Logistic Regression-Up**
 
-**Feature Selection**
+> **Feature Selection**
 
 ### Table Of Contents
 
