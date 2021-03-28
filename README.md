@@ -3,17 +3,17 @@
 > This dataset is a fictional HR dataset created by IBM Data Scientists. There is not much backgroud information about where the data is sourced, what each data point means or how each variable is measured . However based on the data I infer that it may be a company related to the production and sales of Pharmaceuticals. For this project I will be analyzing the data to find drivers of churn and develop a model.
 
 > Summary
-
+>
 > **Exploratory Data Analysis**
-* Churn Rate: **16%**
-* Churn Rate By Department: R&D = **14%** | Sales = **21%** | HR = **19%**
-* Features that are correlated with Churn: Job Involvement | Job Level | Job Role | Marital Status | Overtime | Stock Option Level | Business Travel  
+> * Churn Rate: **16%**
+> * Churn Rate By Department: R&D = **14%** | Sales = **21%** | HR = **19%**
+> * Features that are correlated with Churn: Job Involvement | Job Level | Job Role | Marital Status | Overtime | Stock Option Level | Business Travel  
 
 > **Modeling**
-* **_Validation Results_**
-* **_Test Results_**
+> * **_Validation Results_**
+> * **_Test Results_**
 
-> Num | Model | Recall | Precision | F1
+Num | Model | Recall | Precision | F1
 | --- | --- | --- | --- | ---
 1  | XGB.43 (DOWN)                       | 87% | 31% | 0.46
 2  | Logistic Regression.23 (UP)         | 85% | 47% | 0.60
@@ -27,7 +27,7 @@
 10 | Decision Tree.24 (SMOTE)            | 81% | 22% | 0.35
 
 > Choosen Top Model: **Logistic Regression-Up**
-
+>
 > **Feature Selection**
 
 ### Table Of Contents
