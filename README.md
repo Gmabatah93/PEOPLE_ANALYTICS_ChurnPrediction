@@ -1,15 +1,43 @@
 # Project Overview: Churn Prediction
 
-> This dataset is a fictional HR dataset created by IBM Data Scientists. There is not much backgroud information about where the data is sourced, what each data point means or how each variable is measured . However based on the data I infer that it may be a company related to the production and sales of Pharmaceuticals. For this project I will be analyzing the data to find drivers of churn and develop a model.
+<img src="Images/CHURN.PNG" width="900" >
 
-> ## Summary
+[source][1]
+
+> **Seperation**: an employee who leaves an organization voluntarily or involuntary
+>  * Voluntary Turnover:
+>   + Employee has access to better job alternatives
+>   + Employee is unhappy or dissatisfied with current job or organization
+<img src="Images/VT.PNG" width="900" >
+[Voluntary Turnover][5]
+>  * Involuntary Turnover:
+>   + Employee failed to meet performance standards
+>   + Changes in economic conditions or strategy
 >
-> **Exploratory Data Analysis**
+> **Retention**: process of keeping individuals within the organization who meet or exceed performance standards
+
+## Common Reasons for Employee Churn
+>**Toxic Culture**: Sometimes it's not the employees that doesn't fit the workplace culture. It may be the workplace culture doesn't fit with the employees. If a certain workplace environment does not fit with their employees morally or ethically, then that can certainly cause some employees to leave. The culture can stem from other employees to upper management, and even all the way up to the CEO.\
+>**Lack of Purpose**: Some employees want to know that their work is meaningful. They want to have a reason to wake up everyday and come to work, or want to feel that their work really matters in the grand scheme of things. It could be that if they feel that their work doesn't really matter they may indirectly feel like they dont matter. If that's the case, then that can also cause employees to leave.\
+> **Overwork**: High Stress. Employee burnout also is a common reason for churn.\
+> **Boredom**: Similar to Lack of Purpose but taking a different angle, their work might matter greatly to the organization, but they might have hit a ceiling in regards to their work output. In other words they've been doing the samething for a long time now. Although this might now bother some employees it is still another reason why employees leave.\
+> **Bad Management**: "People don't leave their jobs. They leave their managers"
+
+[blog][2]
+
+## Problems with Employee Churn
+> **Cost**: Estimates suggest that the cost to replace an employee ranges from 90% to 200% of the annual salary of that employee.
+[Allen, Bryant, & Vardaman, 2010][4]\
+**Time**: Depending on the position, the experience needed, and the employee market. Finding new employees can be difficult. Because of all these constraints it takes time to find someone that's the right fit to a particular organization. Along with finding new employees, getting them up to speed on the day to day can also be quite the task.\
+**Team Dynamics and Productivity**: Going in the direction of getting them up to speed, most organizations have teams that rely on each other. Employees coming in and out of those teams can hurt the productivity of an organization, in terms of meeting deadlines or even having the capability of performing certain tasks.
+
+## Summary
+**Exploratory Data Analysis**
 > * Churn Rate: **16%**
 > * Churn Rate By Department: R&D = **14%** | Sales = **21%** | HR = **19%**
-> * Features that are correlated with Churn: Job Involvement | Job Level | Job Role | Marital Status | Overtime | Stock Option Level | Business Travel  
+> * Features that are correlated with Churn: Job Involvement | Job Level | Job Role | Marital Status | Overtime | Stock Option Level | Business Travel\
 
-> **Modeling**
+**Modeling**
 > * **_Validation Results_**
 > * **_Test Results_**
 
@@ -30,16 +58,8 @@ Num | Model | Recall | Precision | F1
 >
 > **Feature Selection**
 
-### Table Of Contents
-
-- [Exploratory Data Analysis](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#exploratory-data-analysis)
-- [Modeling](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#modeling)
-- [Test Results](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#test-results)
-- [Feature Selection](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#feature-selection)
-- [Risk Bucket](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#risk-bucket)
-- [Prescriptive Analysis](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction/blob/main/README.md#prescriptive-analysis)
-
 ### Code Used
+
 R | version
 --- | ---
 readr            | 1.4.0
@@ -64,6 +84,8 @@ doParallel       | 1.0.16
 2. Develop a model to predict Churn
 
 ### Data Collection
+> This dataset is a fictional HR dataset created by IBM Data Scientists. There is not much background information about where the data is sourced, what each data point means or how each variable is measured . However based on the data I infer that it may be a company related to the production and sales of Pharmaceuticals. For this project I will be analyzing the data to find drivers of churn and develop a model.
+
 _The dataset did not come with predefined description. My idea of what each variable means is listed_
 
 Feature | Description
@@ -84,7 +106,7 @@ HourlyRate               | employee pay per hour
 JobInvolvement           | Low; Medium; High; Very High
 JobLevel                 | 1; 2; 3; 4; 5
 JobRole                  | Healthcare Representative; Human Resources; Laboratory Technician; Manager; Manufacturing Director; Research Director; Research Scientist; Sales Executive; Sales Representative
-JobSatisfaction          | Low; Medium; High; Very High 
+JobSatisfaction          | Low; Medium; High; Very High
 MaritalStatus            | Divorced; Married; Single
 MonthlyIncome            | employee pay per Month
 NumCompaniesWorked       | number of companies an employee has worked before
@@ -93,7 +115,7 @@ OverTime                 | No; Yes
 PercentSalaryHike        | increase in salary by percentage
 PerformanceRating        | Low; Good; Excellent; Outstanding
 RelationshipSatisfaction | Low; Medium; High; Very High
-StandardHours            | standard hours per week or 2 weeks (not sure) 
+StandardHours            | standard hours per week or 2 weeks (not sure)
 StockOptionLevel         | 0; 1; 2; 3
 TotalWorkingYears        | how long has a company been working
 TrainingTimesLastYear    | how many times did an employee get trained last year
@@ -103,6 +125,16 @@ YearsInCurrentRole       | how many years has an employee been in their current 
 YearsSinceLastPromotion  | how many years has it been since an employee receieved a promotion
 YearsWithCurrManager     | how many years has an employee been with their current mamanger
 
+### Table Of Contents
+
+- [Exploratory Data Analysis](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#exploratory-data-analysis)
+- [Modeling](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#modeling)
+- [Test Results](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#test-results)
+- [Feature Selection](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#feature-selection)
+- [Risk Bucket](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction#risk-bucket)
+- [Prescriptive Analysis](https://github.com/Gmabatah93/PEOPLE_Analytics_ChurnPrediction/blob/main/README.md#prescriptive-analysis)
+
+
 # Exploratory Data Analysis
 <img src="Images/TARGET_Analysis/TARGET.PNG" width="900" >
 <img src="Images/TARGET_Analysis/TARGET_dept.PNG" width="800">
@@ -110,13 +142,13 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 ## DEPARTMENT: Sales
 <img src="Images/TARGET_Analysis/TARGET_Sales_jobrole.PNG" width="600">
 
-### Sales Representatives: 
+### Sales Representatives:
 
 > #### Factors
 
 <p float="left">
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_joblevel.PNG" width="300" />
-  <img src="Images/TARGET_Analysis/TARGET_SalesRep_jobinvolvement.PNG" width="300" /> 
+  <img src="Images/TARGET_Analysis/TARGET_SalesRep_jobinvolvement.PNG" width="300" />
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_businesstravel.PNG" width="300" />
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_maritalstatus.PNG" width="300" />
   <img src="Images/TARGET_Analysis/TARGET_SalesRep_overtime.PNG" width="300" />
@@ -140,7 +172,7 @@ YearsWithCurrManager     | how many years has an employee been with their curren
 
 > **GOAL**: To catch a VERY HIGH % of the people that may Churn from the company and rank based on risk of churning. (Based on this the metric I choose to optimize is **Recall** becauses it focuses on predicting the Target Class “Churn” Correctly)
 
-## BASELINE 
+## BASELINE
 
 > ### Fit
 
@@ -202,9 +234,9 @@ Num | Model | Recall | | Num | Model | Recall
 
 
 
- 
-## UNDERSAMPLE 
-> **NOTE (Class Imbalance)**: 
+
+## UNDERSAMPLE
+> **NOTE (Class Imbalance)**:
 Their are a number of different Techniques to potentially overcome Class Imbalance when modeling, such as changing the Hyperparameter and Threshold tunning like done previously. Other strategies are Cost Sensitive Algorithms or One-Class Algorithms.
 
 > The technique I’m going to used is called Resampling. Resampling is done by a number of ways;
@@ -269,7 +301,7 @@ Num | Model | Recall | | Num | Model | Recall
 > Best **_UNDERSAMPLE_** Model: **Regularized Regression**
 > Best **_UNDERSAMPLE + Threshold_** Model: **XGB with cut off at 43%**.
 
-## OVERSAMPLE 
+## OVERSAMPLE
 ### Fit
 <img src="Images/MODELING/UP_dt.PNG" width="600">
 
@@ -328,7 +360,7 @@ Num | Model | Recall | | Num | Model | Recall
 * Best **_OVERSAMPLE + Threshold_** Model: **Random Forrest with cut off at 79%**.
 
 
-## SMOTE 
+## SMOTE
 ### Fit
 <img src="Images/MODELING/SMOTE_dt.PNG" width="600">
 
@@ -410,24 +442,24 @@ Num | Model | Recall | Precision | F1
 
 <p float="left">
   <img src="Images/MODELING/GAIN.PNG" width="500" />
-  <img src="Images/MODELING/LIFT.PNG" width="500" /> 
+  <img src="Images/MODELING/LIFT.PNG" width="500" />
 </p>
 
-Num | Model | Percentile | GAIN | LIFT 
+Num | Model | Percentile | GAIN | LIFT
 | --- | --- | --- | --- | ---
 1  | Logistic Regression-Up | 20th | 70.2% | 3.5x
 2  | SVM (Thres 13%)        | 20th | 61.7% | 3x
 3  | XGB-Down (Thres 43%)   | 20th | 57.4% | 2.86x
-   |                        |      |       | 
+   |                        |      |       |
 1  | Logistic Regression-Up | 30th | 85.1% | 2.84x
 2  | SVM (Thres 13%)        | 30th | 76.6% | 2.56x
 3  | XGB-Down (Thres 43%)   | 30th | 70.2% | 2.35x
-   |                        |      |       | 
+   |                        |      |       |
 1  | Logistic Regression-Up | 50th | 91.5% | 1.83x
 1  | SVM (Thres 13%)        | 50th | 91.5% | 1.83x
 3  | XGB-Down (Thres 43%)   | 50th | 87.2% | 1.74x
 
-**Note (20th Percentile)**: 
+**Note (20th Percentile)**:
 * **Logistic Regression-Up** performed the best compared to the other models capturing **70%** of employees that Churned performing 3.5x better than random
 * **SVM (Thres 13%)** came in 2nd with a Gain of **61.7%** perfroming 3x better than random
 
@@ -474,7 +506,7 @@ _Moving forward only evaluating Logistic Regression-Up_
 ## Risk Bucket: Overtime
 
 <img src="Images/RISK/RISK_Overtime.PNG" width="500" />
- 
+
 <img src="Images/RISK/RISK_Overtime_jobrole.PNG" width="500" />
 
 **Note (Overtime)**: employees that have low, medium, and high risk work significantly more Overtime hours than employees with no risk
@@ -486,7 +518,7 @@ _Moving forward only evaluating Logistic Regression-Up_
 ## Risk Bucket: Years with Current Manager
 
 <img src="Images/RISK/RISK_YearsWithCurrentManager.PNG" width="500" />
- 
+
 <img src="Images/RISK/RISK_YearsWithCurrentManager_jobrole.PNG" width="500" />
 
 **Note (YearsWithCurrentManager)**: Employees that have low, medium and high risk generally have worked with the current manager for a lesser amount of years
@@ -495,7 +527,7 @@ _Moving forward only evaluating Logistic Regression-Up_
 ## Risk Bucket: JobLevel
 
 <img src="Images/RISK/RISK_JobLevel.PNG" width="500" />
- 
+
 <img src="Images/RISK/RISK_JobLevel_jobrole.PNG" width="500" />
 
 **Note (JobLevel)**: Employees that have medium and high risk work are mostly JobLevel 1
@@ -506,7 +538,7 @@ _Moving forward only evaluating Logistic Regression-Up_
 # Risk Bucket: Environment Satisfaction
 
 <img src="Images/RISK/RISK_EnvironmentSatisfaction.PNG" width="500" />
- 
+
 <img src="Images/RISK/RISK_EnvironmentSatisfaction_jobrole.PNG" width="500" />
 
 **Note (EnvironmentSatisfaction)**: Employees that have medium and high risk tend to a LOW Environment Satisfaction
@@ -553,7 +585,7 @@ For the employees that actually churned. They had a very high Overtime %. I thin
 > **Note (Prediction)**:
 > * **_Laboratory Technician_**: 24:(11-High | 7-Med | 6-Low)
 > * **_Research Scientist_**: 16:(8-High  | 7-Med | 1-Low)
-> * **_Sales Representative_**: 12:(8-High  | 4-Med) 
+> * **_Sales Representative_**: 12:(8-High  | 4-Med)
 
 > ### STRATEGY:
 
@@ -574,21 +606,15 @@ Assuming JobLevel 1 is Entry Level, HR and Management can use this model to help
 > **Note (Prediction)**:
 > * **_Laboratory Technician_**: 7:(5-High | 2-Med)
 > * **_Research Scientist_**: 7:(4-High | 3-Med)
-> * **_Sales Executive_**: 4:(4-High) 
+> * **_Sales Executive_**: 4:(4-High)
 
-> ### STRATEGY: 
+> ### STRATEGY:
 
 It looks like the primary concern is for Labratory Technicians (54% leave when environment satisfaction is low). Perform survey to assess the current state of conditions for Lab Techs, that includes phyical environment, and culture. From the results we can then work with employees and management to come up with a variety of potential solutions. Finally work with stakeholders to find out which solution to implement first. Once we decide on a solution I will conduct an A/B Test using the same survey and test for statistical significance after implementing our solution.
 
 
-
-
-
- 
-
-
-
-
-
-
-
+[1]: https://www.digitalhrtech.com/high-turnover-meaning-rates/
+[2]: https://blog.jostle.me/blog/5-causes-of-employee-turnover#:~:text=On%20the%20other%20hand%2C%20a,meaning%2C%20boredom%20can%20set%20in.
+[3]: https://smallbusiness.chron.com/problems-high-turnover-rates-11659.html
+[4]: https://google.com
+[5]: https://www.youtube.com/watch?v=I-kn24DQITI&list=PLKkRkURCtPjDmdT0oJ52ApgNE5BKO1DWo&index=2&ab_channel=DavidCaughlin
