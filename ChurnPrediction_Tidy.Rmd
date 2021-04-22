@@ -1,0 +1,261 @@
+---
+title: "ChurnPrediction.Tidymodels"
+author: "Isioma Mabatah"
+date: "4/22/2021"
+output: 
+  html_document:
+    theme: lumen
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+# Libraries
+
+```{r lib}
+library(tidymodels)
+library(doParallel)
+```
+
+# Data
+
+```{r data}
+# Raw Data
+hr_raw <- readr::read_csv("HR-Employee-Attrition.csv")
+
+# Clean data: Factors
+hr_clean <- hr_raw %>%
+  mutate(Attrition = factor(ifelse(Attrition == "Yes", 1,0),
+                            labels =  c("Stayed", "Churn")),
+         BusinessTravel = factor(BusinessTravel,
+                                 levels = c("Non-Travel","Travel_Rarely","Travel_Frequently")),
+         Department = factor(Department),
+         EducationField = factor(EducationField),
+         Gender = factor(Gender),
+         JobLevel = factor(JobLevel),
+         JobRole = factor(JobRole),
+         MaritalStatus = factor(MaritalStatus),
+         Over18 = factor(Over18),
+         OverTime = factor(OverTime),
+         StockOptionLevel = factor(StockOptionLevel),
+         Education = factor(Education,
+                            levels = c(1:5), 
+                            labels = c("Below College","College","Bachelor","Master","Doctor")),
+         EnvironmentSatisfaction = factor(EnvironmentSatisfaction,
+                                          levels = c(1:4),
+                                          labels = c("Low","Medium","High","Very High")),
+         JobInvolvement = factor(JobInvolvement,
+                                 levels = c(1:4),
+                                 labels = c("Low","Medium","High","Very High")),
+         JobSatisfaction = factor(JobSatisfaction,
+                                  levels = c(1:4),
+                                  labels = c("Low","Medium","High","Very High")),
+         PerformanceRating = factor(PerformanceRating,
+                                    levels = c(1:4),
+                                    labels = c("Low","Good","Excellent","Outstanding")),
+         RelationshipSatisfaction = factor(RelationshipSatisfaction,
+                                           levels = c(1:4),
+                                           labels = c("Low","Medium","High","Very High")),
+         WorkLifeBalance = factor(WorkLifeBalance,
+                                  levels = c(1:4),
+                                  labels = c("Bad","Good","Better","Best")))
+
+hr_clean %>% glimpse()
+```
+
+
+# EDA (Simple)
+
+```{r eda, fig.align='center', fig.height=8, fig.width=8}
+# Summary
+hr_clean %>% skimr::skim()
+# - Zero Variance: Over18 | EmployeeCount | Standard Hours
+
+# Correlation Matrix
+hr_clean %>% 
+  select_if(is.numeric) %>% select(-EmployeeCount, -StandardHours) %>% 
+  cor() %>% 
+  ggcorrplot::ggcorrplot(type = "upper", lab = TRUE, lab_size = 2)
+```
+
+# Modeling
+
+## Data Split
+
+```{r Model_Split}
+# Split
+set.seed(0923)
+hr_split <- hr_clean %>% initial_split(prop = 0.6, strata = Attrition)
+hr_train <- training(hr_split)
+hr_test <- testing(hr_split)
+# - validation st
+hr_5fold <- vfold_cv(hr_train, v = 5, strata = Attrition)
+
+```
+
+## Preprocess
+
+```{r Model_Prep}
+# Advanced Recipe
+hr_norm_corr_rec <- 
+  recipe(Attrition ~ ., data = hr_train) %>% 
+  update_role(EmployeeNumber, new_role = "ID") %>% 
+  step_rm(Over18) %>% 
+  step_zv(all_numeric()) %>% 
+  step_normalize(all_numeric()) %>% 
+  step_corr(all_numeric(), threshold = 0.75) %>% 
+  step_dummy(all_nominal(), -all_outcomes())
+# - prepped data
+hr_norm_corr_rec %>% 
+  prep() %>% juice() %>% 
+  glimpse()
+
+# Simple Recipe
+hr_simple_rec <- 
+  recipe(Attrition ~ ., data = hr_train) %>% 
+  update_role(EmployeeNumber, new_role = "ID") %>% 
+  step_rm(Over18) %>% 
+  step_dummy(all_nominal(), -all_outcomes())
+# prepped data
+hr_simple_rec %>% 
+  prep() %>% juice() %>% 
+  glimpse()
+
+```
+
+```{r}
+# Parallel Processing
+cl_3 <- makeCluster(4)
+
+# Metric
+hr_metrics <- metric_set(roc_auc, sens, spec, recall, precision)
+
+# Control
+hr_ctrl <- 
+  control_resamples(verbose = TRUE,
+                    allow_par = TRUE,
+                    save_pred = TRUE,
+                    event_level = "second")
+```
+
+
+## Fit [TABS] {.tabset .tabset-fade}
+
+```{r start_Parallel}
+# Register Parallel Computing
+registerDoParallel(cl_3)
+```
+
+### Lasso Regression
+
+```{r fit_Lasso}
+# Spec
+hr_log_spec <- 
+  logistic_reg(
+    penalty = tune(),
+    mixture = 1
+  ) %>% 
+  set_engine("glmnet") %>% 
+  set_mode("classification")
+
+# Workflow
+hr_log_wflow <- 
+  workflow() %>% 
+  add_recipe(hr_norm_corr_rec) %>% 
+  add_model(hr_log_spec)
+
+# Hyperparameters
+hr_log_grid <- 
+  hr_log_spec %>% 
+  parameters() %>% 
+  grid_regular(levels = 10, orginal = TRUE)
+
+# Fit
+hr_log_tune <- 
+  hr_log_wflow %>% 
+  tune_grid(
+    resamples = hr_5fold,
+    grid = hr_log_grid,
+    metrics = hr_metrics,
+    control = hr_ctrl
+  )
+
+# Visual
+hr_log_tune %>% 
+  autoplot() + 
+  theme_bw()
+```
+
+### Support Vector Machine
+
+```{r fit_SVM}
+# Spec
+hr_svm_spec <- 
+  svm_rbf(
+    cost = tune(),
+    rbf_sigma = tune()
+  ) %>% 
+  set_engine("kernlab") %>% 
+  set_mode("classification")
+
+# Workflow
+hr_svm_wflow <- 
+  workflow() %>% 
+  add_recipe(hr_norm_corr_rec) %>% 
+  add_model(hr_svm_spec)
+
+# Hyperparameters
+hr_svm_grid <- 
+  hr_svm_spec %>% 
+  parameters() %>% 
+  grid_latin_hypercube(size = 20, original = TRUE)
+
+# Fit
+hr_svm_tune <- 
+  hr_svm_wflow %>% 
+  tune_grid(
+    resamples = hr_5fold,
+    grid = hr_svm_grid,
+    metrics = hr_metrics,
+    control = hr_ctrl
+  )
+
+# Visual
+hr_svm_tune %>% 
+  autoplot() +
+  theme_bw()
+```
+
+### Random Forrest
+
+```{r fit_RandomF}
+# Spec
+hr_rf_spec <- 
+  rand_forest(
+    mtry = tune(), 
+    trees = 1000,
+    min_n = tune()
+  ) %>% 
+  set_engine("ranger") %>% 
+  set_mode("classification")
+```
+
+### XGB
+
+```{r fit_XGB}
+# XGB
+hr_xgb_spec <- 
+  boost_tree(
+    mtry = tune(), trees = tune(), min_n = tune(),
+    tree_depth = tune(), learn_rate = tune(), loss_reduction = tune(),
+    sample_size = tune(), stop_iter = tune()
+  ) %>% 
+  set_engine("xgboost") %>% 
+  set_mode("classification")
+```
+
+```{r stop_Parallel}
+# Stop Cluster
+stopCluster(cl_3)
+```
+
