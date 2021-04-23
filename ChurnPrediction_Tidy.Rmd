@@ -14,6 +14,7 @@ output:
 
 ```{r lib}
 library(tidymodels)
+library(workflowsets)
 library(doParallel)
 ```
 
@@ -97,7 +98,7 @@ hr_5fold <- vfold_cv(hr_train, v = 5, strata = Attrition)
 
 ```{r Model_Prep}
 # Advanced Recipe
-hr_norm_corr_rec <- 
+hr_adv_rec <- 
   recipe(Attrition ~ ., data = hr_train) %>% 
   update_role(EmployeeNumber, new_role = "ID") %>% 
   step_rm(Over18) %>% 
@@ -105,8 +106,8 @@ hr_norm_corr_rec <-
   step_normalize(all_numeric()) %>% 
   step_corr(all_numeric(), threshold = 0.75) %>% 
   step_dummy(all_nominal(), -all_outcomes())
-# - prepped data
-hr_norm_corr_rec %>% 
+# -  data
+hr_adv_rec %>% 
   prep() %>% juice() %>% 
   glimpse()
 
@@ -116,14 +117,41 @@ hr_simple_rec <-
   update_role(EmployeeNumber, new_role = "ID") %>% 
   step_rm(Over18) %>% 
   step_dummy(all_nominal(), -all_outcomes())
-# prepped data
+# - data
 hr_simple_rec %>% 
   prep() %>% juice() %>% 
   glimpse()
 
+# Undersample
+# Adv
+hr_adv_rec_DOWN <- 
+  hr_adv_rec %>% 
+  step_downsample(Attrition)
+# - data
+hr_adv_rec_DOWN %>% 
+  prep() %>% juice() %>% 
+  glimpse()
+# Simple
+hr_simple_rec_DOWN <- 
+  hr_simple_rec %>% 
+  step_downsample(Attrition)
+
+# Oversample
+# Adv
+hr_adv_rec_UP <- 
+  hr_adv_rec %>% 
+  step_upsample(Attrition)
+# - data
+hr_adv_rec_UP %>% 
+  prep() %>% juice() %>% 
+  glimpse()
+# Simple
+hr_simple_rec_UP <- 
+  hr_simple_rec %>% 
+  step_upsample(Attrition)
 ```
 
-```{r}
+```{r Model_Ctrl}
 # Parallel Processing
 cl_3 <- makeCluster(4)
 
@@ -148,7 +176,7 @@ registerDoParallel(cl_3)
 
 ### Lasso Regression
 
-```{r fit_Lasso}
+```{r spec_Lasso}
 # Spec
 hr_log_spec <- 
   logistic_reg(
@@ -161,7 +189,7 @@ hr_log_spec <-
 # Workflow
 hr_log_wflow <- 
   workflow() %>% 
-  add_recipe(hr_norm_corr_rec) %>% 
+  add_recipe(hr_adv_rec) %>% 
   add_model(hr_log_spec)
 
 # Hyperparameters
@@ -169,7 +197,9 @@ hr_log_grid <-
   hr_log_spec %>% 
   parameters() %>% 
   grid_regular(levels = 10, orginal = TRUE)
+```
 
+```{r fit_Lasso}
 # Fit
 hr_log_tune <- 
   hr_log_wflow %>% 
@@ -179,16 +209,55 @@ hr_log_tune <-
     metrics = hr_metrics,
     control = hr_ctrl
   )
-
-# Visual
+# - visual
 hr_log_tune %>% 
   autoplot() + 
   theme_bw()
+# - best
+hr_log_tune %>% select_best("sens")
+```
+
+```{r under_Lasso}
+# Fit
+hr_log_tune_DOWN <- 
+  hr_log_wflow %>% 
+  update_recipe(hr_adv_rec_DOWN) %>% 
+  tune_grid(
+    resamples = hr_5fold,
+    grid = hr_log_grid,
+    metrics = hr_metrics,
+    control = hr_ctrl
+  )
+# - visual
+hr_log_tune_DOWN %>% 
+  autoplot() + 
+  theme_bw()
+# - best
+hr_log_tune_DOWN %>% select_best("sens")
+```
+
+```{r over_Lasso}
+# Fit
+hr_log_tune_UP <- 
+  hr_log_wflow %>% 
+  update_recipe(hr_adv_rec_UP) %>% 
+  tune_grid(
+    resamples = hr_5fold,
+    grid = hr_log_grid,
+    metrics = hr_metrics,
+    control = hr_ctrl
+  )
+# - Visual
+hr_log_tune_UP %>% 
+  autoplot() + 
+  theme_bw()
+# - Best
+hr_log_tune_UP %>% select_best("sens")
 ```
 
 ### Support Vector Machine
 
-```{r fit_SVM}
+```{r spec_SVM}
 # Spec
 hr_svm_spec <- 
   svm_rbf(
@@ -201,7 +270,7 @@ hr_svm_spec <-
 # Workflow
 hr_svm_wflow <- 
   workflow() %>% 
-  add_recipe(hr_norm_corr_rec) %>% 
+  add_recipe(hr_adv_rec) %>% 
   add_model(hr_svm_spec)
 
 # Hyperparameters
@@ -209,7 +278,9 @@ hr_svm_grid <-
   hr_svm_spec %>% 
   parameters() %>% 
   grid_latin_hypercube(size = 20, original = TRUE)
+```
 
+```{r fit_SVM}
 # Fit
 hr_svm_tune <- 
   hr_svm_wflow %>% 
@@ -219,39 +290,148 @@ hr_svm_tune <-
     metrics = hr_metrics,
     control = hr_ctrl
   )
-
-# Visual
+# - visual
 hr_svm_tune %>% 
   autoplot() +
   theme_bw()
+# - best
+hr_svm_tune %>% select_best("sens")
+```
+
+```{r under_SVM}
+# Fit
+hr_svm_tune_DOWN <- 
+  hr_svm_wflow %>% 
+  update_recipe(hr_adv_rec_DOWN) %>% 
+  tune_grid(
+    resamples = hr_5fold,
+    grid = hr_svm_grid,
+    metrics = hr_metrics,
+    control = hr_ctrl
+  )
+# - visual
+hr_svm_tune_DOWN %>% 
+  autoplot() +
+  theme_bw()
+# - best
+hr_svm_tune_DOWN %>% select_best("sens")
+```
+
+```{r over_SVM}
+# Fit
+hr_svm_tune_UP <- 
+  hr_svm_wflow %>% 
+  update_recipe(hr_adv_rec_UP) %>% 
+  tune_grid(
+    resamples = hr_5fold,
+    grid = hr_svm_grid,
+    metrics = hr_metrics,
+    control = hr_ctrl
+  )
+# - visaul
+hr_svm_tune_UP %>% 
+  autoplot() +
+  theme_bw()
+# - best
+hr_svm_tune_UP %>% select_best("sens")
 ```
 
 ### Random Forrest
 
-```{r fit_RandomF}
+```{r spec_RF}
 # Spec
 hr_rf_spec <- 
   rand_forest(
     mtry = tune(), 
-    trees = 1000,
+    trees = 5000,
     min_n = tune()
   ) %>% 
   set_engine("ranger") %>% 
   set_mode("classification")
+
+# Workflow
+hr_rf_wflow <- 
+  workflow() %>% 
+  add_recipe(hr_simple_rec) %>% 
+  add_model(hr_rf_spec)
+
+# Hyperparameter
+hr_rf_grid <- 
+  grid_regular(
+    mtry(range = c(1,35)),
+    min_n(range = c(2,10)),
+    levels = 5
+  )
 ```
 
-### XGB
+```{r fit_RF}
+# Fit
+hr_rf_tune <- 
+  hr_rf_wflow %>% 
+  tune_grid(
+    resamples = hr_5fold,
+    grid = hr_rf_grid,
+    metrics = hr_metrics,
+    control = hr_ctrl
+  )
+# - visual
+hr_rf_tune %>% 
+  autoplot() +
+  theme_bw()
+# - best
+hr_rf_tune %>% select_best("sens")
+```
 
-```{r fit_XGB}
-# XGB
-hr_xgb_spec <- 
-  boost_tree(
-    mtry = tune(), trees = tune(), min_n = tune(),
-    tree_depth = tune(), learn_rate = tune(), loss_reduction = tune(),
-    sample_size = tune(), stop_iter = tune()
-  ) %>% 
-  set_engine("xgboost") %>% 
-  set_mode("classification")
+```{r under_RF}
+# Fit
+hr_rf_tune_DOWN <-
+  hr_rf_wflow %>% 
+  update_recipe(hr_simple_rec_DOWN) %>% 
+  tune_grid(
+    resamples = hr_5fold,
+    grid = hr_rf_grid,
+    metrics = hr_metrics,
+    control = hr_ctrl
+  )
+# - visual
+hr_rf_tune_DOWN %>% 
+  autoplot() + 
+  theme_bw()
+# - best
+hr_rf_tune_DOWN %>% select_best("sens")
+```
+
+```{r over_RF}
+# Fit
+hr_rf_tune_UP <-
+  hr_rf_wflow %>% 
+  update_recipe(hr_simple_rec_UP) %>% 
+  tune_grid(
+    resamples = hr_5fold,
+    grid = hr_rf_grid,
+    metrics = hr_metrics,
+    control = hr_ctrl
+  )
+# - visual
+hr_rf_tune_UP %>% 
+  autoplot() + 
+  theme_bw()
+# - best
+hr_rf_tune_UP %>% select_best("sens")
+```
+
+## Workflow set
+
+```{r}
+workflow_Baseline <- 
+  workflow_set(
+    preproc = list(simple = hr_simple_rec, adv = hr_norm_corr_rec),
+    models = list(Lasso = hr_log_spec, SVM = hr_svm_spec, RF = hr_rf_spec)
+  )
+
+
+workflow_Baseline %>% pull_workflow(id = "simple_Lasso")
+option
 ```
 
 ```{r stop_Parallel}
