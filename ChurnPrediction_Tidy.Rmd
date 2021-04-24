@@ -422,16 +422,66 @@ hr_rf_tune_UP %>% select_best("sens")
 
 ## Workflow set
 
-```{r}
-workflow_Baseline <- 
+```{r wflow_ALL}
+# Advance
+workflow_Adv <- 
   workflow_set(
-    preproc = list(simple = hr_simple_rec, adv = hr_norm_corr_rec),
-    models = list(Lasso = hr_log_spec, SVM = hr_svm_spec, RF = hr_rf_spec)
+    preproc = list(adv = hr_adv_rec, adv_DOWN = hr_adv_rec_DOWN, adv_UP = hr_adv_rec_UP),
+    models = list(Lasso = hr_log_spec, SVM = hr_svm_spec)
   )
 
+# Simple
+workflow_Simple <- 
+  workflow_set(
+    preproc = list(simple = hr_simple_rec, simple_DOWN = hr_simple_rec_DOWN, simple_UP = hr_simple_rec_UP),
+    models = list(RF = hr_rf_spec)
+  )
 
-workflow_Baseline %>% pull_workflow(id = "simple_Lasso")
-option
+# All
+workflow_ALL <- 
+  bind_rows(workflow_Adv, workflow_Simple) %>% 
+  mutate(wflow_id = gsub("(adv_)|(simple_)", "", wflow_id))
+```
+
+```{r wflow_Fit}
+# Control
+grid_wflow_ctrl <- 
+  control_grid(
+    save_pred = TRUE,
+    parallel_over = "everything",
+    save_workflow = TRUE,
+    event_level = "second"
+  )
+
+# Register Parallel Computing
+registerDoParallel(cl_3)
+
+# Results & Time
+wflow_results <- 
+    workflow_ALL %>% 
+    workflow_map("tune_grid",
+                 resamples = hr_5fold, 
+                 grid = 20,
+                 control = grid_wflow_ctrl, 
+                 seed = 0923,
+                 metrics = metric_set(sens,spec,precision, recall),
+                 verbose = TRUE)
+
+wflow_results %>% 
+  autoplot(rank_metric = "sens",
+           metric = "sens",
+           id = "Lasso",
+           select_best = TRUE) + 
+  theme_bw()
+
+wflow_results %>% 
+  collect_metrics() %>% 
+  mutate(wflow_id = factor(wflow_id),
+         .metric = factor(.metric)) %>% 
+  group_by(wflow_id, .metric) %>%
+  summarise(mean = mean(mean)) %>% 
+  ggplot(aes(wflow_id, mean, color = .metric)) +
+  geom_point()
 ```
 
 ```{r stop_Parallel}
